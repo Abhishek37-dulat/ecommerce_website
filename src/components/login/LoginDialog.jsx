@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import img1 from "../../coffee123.png";
+// import img1 from "../../coffee123.png";
 import {
   Dialog,
   Box,
@@ -18,7 +18,7 @@ const Component = styled(Box)`
   width: 90vh;
 `;
 const Image = styled(Box)`
-  background: #f51344 url(${img1}) center 420% no-repeat;
+  background: #f51344 url() center 420% no-repeat;
   height: 84.5%;
   width: 28%;
   padding: 45px 35px;

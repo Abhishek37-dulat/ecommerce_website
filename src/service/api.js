@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://talented-tuna-panama-hat.cyclic.app";
+const URL = "http://localhost:8000";
 
 export const authenticatesSignup = async (data) => {
   try {

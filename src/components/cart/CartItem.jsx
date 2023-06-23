@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Typography, Box, styled, Button } from "@mui/material";
 import { addEllipsis } from "../../utils/common-utils";
@@ -29,7 +29,7 @@ const Remove = styled(Button)`
   font-weight: 600;
 `;
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, condition }) => {
   const dispatch = useDispatch();
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
@@ -42,7 +42,7 @@ const CartItem = ({ item }) => {
     <Component>
       <LeftComponent>
         <img src={item.url} alt="product" style={{ height: 110, width: 110 }} />
-        <GroupedButton />
+        {condition ? <GroupedButton /> : ""}
       </LeftComponent>
       <Box>
         <Typography>{addEllipsis(item.title.longTitle)}</Typography>
@@ -69,7 +69,11 @@ const CartItem = ({ item }) => {
             {item.price.discount}
           </Box>
         </Typography>
-        <Remove onClick={() => removeItemFromCart(item.id)}>Remove</Remove>
+        {condition ? (
+          <Remove onClick={() => removeItemFromCart(item.id)}>Remove</Remove>
+        ) : (
+          ""
+        )}
       </Box>
     </Component>
   );

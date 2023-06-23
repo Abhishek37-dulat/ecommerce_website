@@ -3,7 +3,7 @@ import Carousel from "react-multi-carousel";
 import Countdown from "react-countdown";
 
 import "react-multi-carousel/lib/styles.css";
-import clock from "../../clock.png";
+// import clock from "../../clock.png";
 import { Link } from "react-router-dom";
 
 const Component = styled(Box)`
@@ -77,7 +77,7 @@ const Slide = ({ products, title, timer }) => {
         <DealText>{title}</DealText>
         {timer && (
           <Timer>
-            <img src={clock} alt="clock" style={{ width: 24 }} />
+            {/* <img src={clock} alt="clock" style={{ width: 24 }} /> */}
             <Countdown date={Date.now() + 4.32e7} renderer={renderer} />
           </Timer>
         )}
@@ -107,7 +107,7 @@ const Slide = ({ products, title, timer }) => {
         itemClass="carousel-item-padding-40-px"
         containerClass="carousel-container"
       >
-        {products.map((product, index) => (
+        {products?.map((product, index) => (
           <Link
             to={`product/${product.id}`}
             style={{ textDecoration: "none" }}

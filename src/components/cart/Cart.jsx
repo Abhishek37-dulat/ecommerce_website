@@ -1,9 +1,12 @@
 import { Box, Grid, Typography, styled, Button } from "@mui/material";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import EmptyCart from "./EmptyCart";
 import TotalView from "./TotalView";
+import { useNavigate } from "react-router-dom";
+import { removeFromCart } from "../../reducer/actions/cartAction";
+import Checkout from "../checkout/Checkout";
 
 const Container = styled(Grid)(({ theme }) => ({
   padding: "30px 135px",
@@ -38,17 +41,25 @@ const LeftComponent = styled(Grid)(({ theme }) => ({
 }));
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const [condition, setCondition] = useState(true);
   const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const handleCheckout = () => {
+    navigate("/checkout");
+
+    setCondition(false);
+  };
   return (
     <>
-      {cartItems.length ? (
+      {cartItems?.length ? (
         <Container container>
           <LeftComponent item lg={9} md={9} sm={12} xs={12}>
             <Header>
               <Typography>My Cart ({cartItems.length})</Typography>
             </Header>
-            {cartItems.map((item) => (
-              <CartItem item={item} />
+            {cartItems?.map((item) => (
+              <CartItem item={item} condition={condition} />
             ))}
             <ButtonWrapper>
               <StyledButton
@@ -58,6 +69,7 @@ const Cart = () => {
                     opacity: 0.7,
                   },
                 }}
+                onClick={() => handleCheckout()}
               >
                 Place Order
               </StyledButton>

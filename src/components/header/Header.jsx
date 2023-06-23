@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import shome from "../../shopme3.png";
+// import shome from "../../shopme3.png";
 
 import {
   AppBar,
@@ -80,13 +80,13 @@ const Header = () => {
           {list()}
         </Drawer>
         <Component to="/">
-          <img
+          {/* <img
             src={shome}
             alt="logo"
             style={{
               width: 45,
             }}
-          />
+          /> */}
           <SubHeader>ShopMe</SubHeader>
         </Component>
         <Search />
