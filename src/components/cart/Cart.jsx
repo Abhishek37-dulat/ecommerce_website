@@ -54,6 +54,11 @@ const Cart = () => {
     <>
       {cartItems?.length ? (
         <Container container>
+{/*    
+lg: number of column in width 992px
+md: number of column in width 768px
+sm: number of column in width 576px
+*/}
           <LeftComponent item lg={9} md={9} sm={12} xs={12}>
             <Header>
               <Typography>My Cart ({cartItems.length})</Typography>
